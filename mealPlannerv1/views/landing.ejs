@@ -1,0 +1,27 @@
+<% include partials/header %>
+<div class="container" id="landingText">
+    <h1>My Monthly Meals</h1>
+    <h2>Helping you <br/><span id="helpsWith">plan</span><br/> in just a few clicks.</h2>
+</div>
+<script>
+
+//Loop through words on the Landing page
+    var helpsWith = document.getElementById("helpsWith");
+    var helpArr = ["plan", "budget", "explore", "cook", "save time"];
+    var counter = 0;
+    var helpVal;
+    setInterval(function(){
+        if (counter < helpArr.length - 1) {
+            counter++;
+            helpVal = helpArr[counter];
+            helpsWith.innerHTML = helpVal;
+             
+        } else {
+            counter = 0;
+            helpVal = helpArr[counter];
+            helpsWith.innerHTML = helpVal;
+        };
+    }, 2000);
+</script>
+
+<% include partials/footer %>

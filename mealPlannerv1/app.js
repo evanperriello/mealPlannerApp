@@ -15,16 +15,16 @@ var indexRoutes = require("./routes/index");
 mongoose.connect("mongodb://localhost/meal_planner");
     //set up bodyParser so that req.body object is built/accessible, accepts UTF-8
 app.use(bodyParser.urlencoded({extended: true}));
-    //serve static files from the ./public folder using the __dirname variable
+    //serve static files from the ./public folder
 app.use(express.static(__dirname + "/public"));
-    //set ejs as the engine to build HTML from view files
+    //set ejs as the engine to build HTML from view templates
 app.set("view engine", "ejs");
-    //use methodOverride to allow the use of Put, Edit, and other route methods
-    //add "?_method=" at the end of a url to change the method from POST
+    //use methodOverride to allow the use of Put, Edit, and other RESTFUL routes
+    //remember to add "?_method=" at the end of a url to change the method from POST
 app.use(methodOverride("_method"));
 
 //PASSPORT CONFIG
-//Do this here later.
+//Do this later.
 
 //ROUTES CONFIG
 app.use(indexRoutes);

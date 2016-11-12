@@ -3,7 +3,7 @@ var express = require("express"),
 
 //LANDING/ROOT ROUTE
 router.get("/", function(req, res){
-   res.send("Your app is a runnin!"); 
+   res.render("landing"); 
 });
 
 //export the router object to the main app file
