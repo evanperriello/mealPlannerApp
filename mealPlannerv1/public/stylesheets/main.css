@@ -4,4 +4,10 @@
 }
 #landingText {
     text-align: center;
+
+}
+#landingText .jumbotron {
+    position: relative;
+    top: 200px;
+    opacity:.8;
 }

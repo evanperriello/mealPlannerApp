@@ -1,6 +1,6 @@
 //Loop through words on the Landing page
     var helpsWith = document.getElementById("helpsWith");
-    var helpArr = ["plan", "budget", "explore", "cook", "save time"];
+    var helpArr = ["plan", "budget", "explore", "cook", "save time", "impress"];
     var counter = 0;
     var helpVal;
     function replaceWord(){
