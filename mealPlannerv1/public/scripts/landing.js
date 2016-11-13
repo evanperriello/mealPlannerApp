@@ -3,15 +3,15 @@
     var helpArr = ["plan", "budget", "explore", "cook", "save time"];
     var counter = 0;
     var helpVal;
-    setInterval(function(){
-        if (counter < helpArr.length - 1) {
-            counter++;
+    function replaceWord(){
+            if(counter < helpArr.length -1){
+                counter++;
+            } else {
+                counter = 0;
+            }
             helpVal = helpArr[counter];
             helpsWith.innerHTML = helpVal;
-             
-        } else {
-            counter = 0;
-            helpVal = helpArr[counter];
-            helpsWith.innerHTML = helpVal;
-        };
-    }, 2000);
+            console.log(counter);
+    }
+    
+    setInterval(replaceWord, 3000);
