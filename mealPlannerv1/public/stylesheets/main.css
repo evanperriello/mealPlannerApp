@@ -1,3 +1,9 @@
+/*navbar */
+.navbar {
+    margin-bottom: 0;
+    
+}
+
 /* Landing Page */
 #helpsWith {
     color: #4674bf;
@@ -9,5 +15,12 @@
 #landingText .jumbotron {
     position: relative;
     top: 200px;
-    opacity:.8;
+    opacity:.9;
 }
+#landingBack {
+    background-image: url(../images/smallCover.jpg);
+    background-size:cover;
+    height: 100vh;
+}
+
+/*About Page*/

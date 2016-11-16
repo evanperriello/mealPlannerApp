@@ -14,4 +14,4 @@
             console.log(counter);
     }
     
-    setInterval(replaceWord, 3000);
+    setInterval(replaceWord, 2500);
