@@ -5,9 +5,6 @@
 }
 
 /*General styles*/
-h1, h2 {
-    text-align: center;
-}
 
 /* Landing Page */
 #helpsWith {
@@ -35,4 +32,20 @@ h1, h2 {
     font-weight: lighter;
     font-size:1em;
 }
+/*homepage styles*/
+.borderedDiv {
+    border:1px gray solid;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+.divToExpand {
+    height:60vh;
+    white-space: nowrap;
+    overflow-y: scroll;
+}
+.col-lg-12 {
+    padding-left:0;
+    padding-right:0;
+}
 
+.hiddenContent {display:none;}
