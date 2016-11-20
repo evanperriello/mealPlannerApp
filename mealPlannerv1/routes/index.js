@@ -9,13 +9,14 @@ router.get("/", function(req, res){
 router.get("/about", function(req, res){
     res.render("about");
 });
-//Join PAGE
+//Join FORM
 router.get("/join", function(req, res){
     res.render("join");
 });
 
-//Join Logic
+//Join SUBMITTED
 router.post("/join", function(req, res){
+    //logic to add new user to the database
    res.render("home");
 });
 
