@@ -4,11 +4,16 @@
     
 }
 
+/*General styles*/
+h1, h2 {
+    text-align: center;
+}
+
 /* Landing Page */
 #helpsWith {
     color: #4674bf;
 }
-#landingText {
+#landingText{
     text-align: center;
 
 }
@@ -24,3 +29,10 @@
 }
 
 /*About Page*/
+
+/*Join form*/
+.label-helper {
+    font-weight: lighter;
+    font-size:1em;
+}
+
