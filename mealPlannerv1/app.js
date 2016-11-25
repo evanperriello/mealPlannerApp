@@ -13,7 +13,7 @@ var indexRoutes = require("./routes/index");
 //App CONFIG
     //connect to/create database
 mongoose.connect("mongodb://localhost/meal_planner");
-    //set up bodyParser so that req.body object is built/accessible, accepts UTF-8
+    //set up bodyParser so that req.body object is accessible, accepts UTF-8
 app.use(bodyParser.urlencoded({extended: true}));
     //serve static files from the ./public folder
 app.use(express.static(__dirname + "/public"));

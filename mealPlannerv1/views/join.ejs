@@ -4,22 +4,23 @@
     <h2>It's free and easy.</h2>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
+            <div class="bg-danger hiddenContent" id="errorMessage"></div>
             <form method="POST" action="/join">
                 <div class="form-group">
                     <label for="username">Username<br/><span class="label-helper">This will be visible to other users.</span></label>
-                    <input type="text" class="form-control text-center" name="username" placeholder="YumYumEatEmUp">
+                    <input id="username" type="text" class="form-control text-center" name="username required" placeholder="YumYumEatEmUp" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email<br/><span class="label-helper">We won't share this, and we'll never send you spam.</span></label>
-                    <input type="email" class="form-control text-center" name="email" placeholder="iliketoeat@email.com.">
+                    <input id="email" type="email" class="form-control text-center" name="email" placeholder="iliketoeat@email.com." required>
                 </div>
                 <div class="form-group">
                     <label for="password">Choose a password<br/><span class="label-helper">At least 8 letters, symbols, and numbers</span></label>
-                    <input type="password" class="form-control text-center" name="password" placeholder="mypassword">
+                    <input id="password" type="password" class="form-control text-center" name="password" placeholder="mypassword" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm your password</label>
-                    <input type="password" class="form-control text-center" name="password2" placeholder="mypassword">
+                    <input id="password2" type="password" class="form-control text-center" name="password2" placeholder="mypassword" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="form-control btn btn-success" name="submit" value="Join Now">
@@ -30,4 +31,39 @@
     </div>
     
 </div>
+<script>
+    var form = document.getElementsByTagName("form")[1];
+    var errorMessage = document.getElementById("errorMessage");
+    
+    function giveError(message){
+        errorMessage.innerHTML = message;
+        errorMessage.style.display="block";
+    }
+    
+    function validateForm(evt){
+        var username = document.getElementById("username");
+        var email = document.getElementById("email");
+        var pass1 = document.getElementById("password");
+        var pass2 = document.getElementById("password2");
+        if (username.value === ""){
+            giveError("Please enter a username.");
+            evt.preventDefault();
+        } else  if (!(/@/.test(email.value))){
+            giveError("Please enter a valid email address.");
+            evt.preventDefault();
+        } else if (pass1.value.length < 8){
+            giveError("Please enter a password that is at least 8 characters long.");
+            evt.preventDefault();
+        } else if(pass1.value !== pass2.value) {
+            giveError("Password values must match.");
+            evt.preventDefault();
+        }
+    }
+    
+    if (form.addEventListener) {
+        form.addEventListener("submit", validateForm, true);
+    } else {
+        element.attachEvent("onsubmit", validateForm);
+    }
+</script>
 <% include partials/footer %>
