@@ -5,14 +5,35 @@ var express = require("express"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    Recipe = require("./models/recipe.js"),
+    User = require("./models/user.js");
     
 //Require the Route files here
 var indexRoutes = require("./routes/index");
     
-//App CONFIG
-    //connect to/create database
+//DATABASE CONFIG
+    //Connect to database:
 mongoose.connect("mongodb://localhost/meal_planner");
+    //define function to be called once the database is connected
+function dbOpen(){
+    var recipeTest = new Recipe({
+        name: "Untasty Chicken",
+        ingredients: {chicken: 1, salt: 1, pepper: 1, onion: 1},
+        steps: "Cook da chicken. Make it bad. Burn it."
+    });
+    recipeTest.save(function(err, recipeTest) {
+        if(err) {return console.error(err);}
+        console.log(recipeTest.name + " was saved.");
+    });
+}
+    //Check if it connected, then run the dbOpen function
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "There was an error connecting to the database:"));
+db.once("open", dbOpen);
+
+
+//APP CONFIG
     //set up bodyParser so that req.body object is accessible, accepts UTF-8
 app.use(bodyParser.urlencoded({extended: true}));
     //serve static files from the ./public folder
@@ -24,7 +45,16 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
 //PASSPORT CONFIG
-//Do this later.
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        User.findOne({ username: username }, function(err, user){
+            if(err){return done(err);}
+            if (!user) {return done(null, false);}
+            if (!user.verifyPassword(password)) {return done(null, false); }
+            return done(null, user);
+        });
+    }
+    ));
 
 //ROUTES CONFIG
 app.use(indexRoutes);
