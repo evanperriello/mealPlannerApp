@@ -1,8 +1,7 @@
 var express = require("express"),
     router = express.Router(),
     passport = require("passport"),
-    User = require("./../models/user.js"),
-    middleware = require("./../middleware");
+    User = require("./../models/user.js");
     
 //JOIN FORM
 router.get("/join", function(req, res){
@@ -30,7 +29,7 @@ router.post("/join", function(req, res){
 
 //LOGIN FORM
 router.get("/login", function (req, res){
-    res.render("login", {errorMessage: ""});
+    res.render("login");
 });
 
 //LOGIN SUBMITTED

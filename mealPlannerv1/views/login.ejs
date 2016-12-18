@@ -3,9 +3,6 @@
     <h1>Log In</h1>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-            <% if(errorMessage){ %>
-                <div class="bg-danger" id="errorMessage"><p><%=errorMessage %></p></div>
-            <% } %>
             <form method="POST" action="/login">
                 <div class="form-group">
                     <label for="username">Username</label>

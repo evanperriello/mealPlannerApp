@@ -16,16 +16,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">My Monthly Meals</a>
+      <a class="navbar-brand" 
+      <% if(!currentUser){ %>
+        href="/"
+      <% } else { %>
+        href = "/home"
+        <% } %>
+      >My Monthly Meals</a>
     </div>
 
     <!-- Links to be toggled -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/about">About</a></li>
-        <li><a href="/join">Join</a></li>
-        <li><a href="/login">Login</a></li>
+        <% if(!currentUser){ %>
+          <li><a href="/about">About</a></li>
+          <li><a href="/join">Join</a></li>
+          <li><a href="/login">Login</a></li>
+        <% } else { %>
+        <li><a>Hello <%= currentUser.username %></a></li>
         <li><a href="/logout">Logout</a></li>
+        <% } %>
       </ul>
       
       <!-- Search Bar -->
