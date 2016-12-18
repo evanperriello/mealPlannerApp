@@ -17,15 +17,7 @@ var indexRoutes = require("./routes/index");
 mongoose.connect("mongodb://localhost/meal_planner");
     //define function to be called once the database is connected
 function dbOpen(){
-    var recipeTest = new Recipe({
-        name: "Untasty Chicken",
-        ingredients: {chicken: 1, salt: 1, pepper: 1, onion: 1},
-        steps: "Cook da chicken. Make it bad. Burn it."
-    });
-    recipeTest.save(function(err, recipeTest) {
-        if(err) {return console.error(err);}
-        console.log(recipeTest.name + " was saved.");
-    });
+    console.log("Database open.");
 }
     //Check if it connected, then run the dbOpen function
 var db = mongoose.connection;
@@ -45,16 +37,7 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
 //PASSPORT CONFIG
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.findOne({ username: username }, function(err, user){
-            if(err){return done(err);}
-            if (!user) {return done(null, false);}
-            if (!user.verifyPassword(password)) {return done(null, false); }
-            return done(null, user);
-        });
-    }
-    ));
+// add this in the future.
 
 //ROUTES CONFIG
 app.use(indexRoutes);
