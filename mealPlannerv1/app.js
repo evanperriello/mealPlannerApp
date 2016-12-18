@@ -13,7 +13,8 @@ var express = require("express"),
     User = require("./models/user.js");
     
 //Require the Route files here
-var indexRoutes = require("./routes/index");
+var indexRoutes = require("./routes/index"),
+    authenticateRoutes = require("./routes/authenticate");
     
 //DATABASE CONFIG
     //Connect to database:
@@ -57,6 +58,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //ROUTES CONFIG
 app.use(indexRoutes);
+app.use(authenticateRoutes);
 
 //listen to local port and ip, and console log.
 app.listen(process.env.PORT, process.env.IP, function(){
