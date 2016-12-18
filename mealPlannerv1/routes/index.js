@@ -31,7 +31,7 @@ router.post("/join", function(req, res){
 
 //LOGIN FORM
 router.get("/login", function (req, res){
-    res.render("login");
+    res.render("login", {errorMessage: ""});
 });
 
 //LOGIN SUBMITTED
@@ -40,15 +40,17 @@ router.post("/login", function (req, res){
         if(err){
             //handle error better here.
             console.log(err);
-            res.redirect("/login");
+            res.render("login", {errorMessage: ""});
         }
         else {
             if (user) {
                 console.log(user);
                 res.redirect("/home");
             } else {
-                console.log("User " + req.body.username + " was not found. Please try again or register now.");
-                res.redirect("/login");
+                var errorMessage = "User " + req.body.username + " was not found. Please try again or join now.";
+                res.render("login", 
+                {errorMessage: errorMessage}
+                );
             }
         }
     });
