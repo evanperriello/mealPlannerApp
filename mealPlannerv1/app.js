@@ -5,6 +5,7 @@ var express = require("express"),
     expressSession = require("express-session"),
     mongoose = require("mongoose"),
     passport = require("passport"),
+    flash = require("connect-flash"),
     LocalStrategy = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     methodOverride = require("method-override"),
@@ -37,6 +38,7 @@ app.set("view engine", "ejs");
     //use methodOverride to allow the use of Put, Edit, and other RESTFUL routes
     //remember to add "?_method=" at the end of a url to change the method from POST
 app.use(methodOverride("_method"));
+app.use(flash());
 
 //SESSION CONFIG
 app.use(expressSession({
@@ -49,6 +51,7 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

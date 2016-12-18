@@ -18,13 +18,17 @@ router.get("/join", function(req, res){
 
 //JOIN SUBMITTED
 router.post("/join", function(req, res){
+    //use the register method added to the User model by passport to create user w/ encoded password
     User.register(new User(
+            //take username and email from form, store unsalted
             {username: req.body.username, email: req.body.email}
         ), req.body.password, function(err, user){
         if(err){
+            //handle error better in future.
             console.log(err);
             res.render("join");
         }
+        //authenticate user, using the local strategy from passport.
         passport.authenticate("local")(req, res, function(){
            res.redirect("/home");
         });
@@ -37,25 +41,12 @@ router.get("/login", function (req, res){
 });
 
 //LOGIN SUBMITTED
-router.post("/login", function (req, res){
-    User.findOne({"username": req.body.username}, function(err, user){
-        if(err){
-            //handle error better here in future.
-            console.log(err);
-            res.render("login", {errorMessage: ""});
-        }
-        else {
-            if (user) {
-                console.log(user);
-                res.redirect("/home");
-            } else {
-                var errorMessage = "User " + req.body.username + " was not found. Please try again or join now.";
-                res.render("login", 
-                {errorMessage: errorMessage}
-                );
-            }
-        }
-    });
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/home",
+    failureRedirect: "/login",
+    failureFlash: "Login failed. Please try again or Join as a new user."
+}), function (req, res){
+    
 });
 
 //HOME Page after login/join
