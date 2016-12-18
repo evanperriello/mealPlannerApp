@@ -1,7 +1,8 @@
 var express = require("express"),
     router = express.Router(),
     passport = require("passport"),
-    User = require("./../models/user.js");
+    User = require("./../models/user.js"),
+    middleware = require("./../middleware");
 
 //LANDING/ROOT ROUTE
 router.get("/", function(req, res){
@@ -50,8 +51,14 @@ router.post("/login", passport.authenticate("local", {
 });
 
 //HOME Page after login/join
-router.get("/home", function(req, res){
-   res.render("home"); 
+router.get("/home", middleware.isLoggedIn, function(req, res){
+   res.render("home");
+});
+
+//LOGOUT Route
+router.get("/logout", function(req, res){
+   req.logout();
+   res.redirect("/");
 });
 
 //export the router object to the main app file
