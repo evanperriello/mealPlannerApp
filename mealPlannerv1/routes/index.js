@@ -18,15 +18,17 @@ router.get("/join", function(req, res){
 
 //JOIN SUBMITTED
 router.post("/join", function(req, res){
-    //using the User model, create a new user with a username and email
-    User.create({username: req.body.username, email: req.body.email}, function(err, user){
-        if(err){console.log(err);}
-        else {
-            console.log("We just saved a user to the database: ");
-            console.log(user);
+    User.register(new User(
+            {username: req.body.username, email: req.body.email}
+        ), req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            res.render("join");
         }
+        passport.authenticate("local")(req, res, function(){
+           res.redirect("/home");
+        });
     });
-    res.redirect("home");
 });
 
 //LOGIN FORM
@@ -38,7 +40,7 @@ router.get("/login", function (req, res){
 router.post("/login", function (req, res){
     User.findOne({"username": req.body.username}, function(err, user){
         if(err){
-            //handle error better here.
+            //handle error better here in future.
             console.log(err);
             res.render("login", {errorMessage: ""});
         }

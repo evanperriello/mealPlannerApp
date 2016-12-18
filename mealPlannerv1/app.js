@@ -2,9 +2,11 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
+    expressSession = require("express-session"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose"),
     methodOverride = require("method-override"),
     Recipe = require("./models/recipe.js"),
     User = require("./models/user.js");
@@ -36,8 +38,19 @@ app.set("view engine", "ejs");
     //remember to add "?_method=" at the end of a url to change the method from POST
 app.use(methodOverride("_method"));
 
+//SESSION CONFIG
+app.use(expressSession({
+    secret: "I am the very model of the modern major general",
+    resave: false,
+    saveUninitialized: false
+}));
+
 //PASSPORT CONFIG
-// add this in the future.
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //ROUTES CONFIG
 app.use(indexRoutes);
