@@ -24,7 +24,9 @@
     background-size:cover;
     height: 100vh;
 }
-
+.row {
+    margin-top:20px;
+}
 /*About Page*/
 
 /*Join form*/
@@ -34,9 +36,16 @@
 }
 /*homepage styles*/
 .borderedDiv {
-    border:1px gray solid;
+    height:300px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius:7px;
-    margin-bottom:5px;
+    margin:0 auto;
+}
+h1 {
+    padding-top:10px;
+}
+.borderedDiv h2 {
+    font-size:10em;
 }
 .divToExpand {
     height:60vh;
@@ -47,5 +56,9 @@
     padding-left:0;
     padding-right:0;
 }
+#recipeButton {background-color:#97ef97;}
+#monthButton {background-color: #a7d5f2;}
+#todayButton {background-color: #f5f7a3}
+#shopButton {background-color: #f4cdcd;}
 
 .hiddenContent {display:none;}

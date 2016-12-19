@@ -1,54 +1,42 @@
 <% include partials/header %>
 <div class="container home text-center">
-    <h1>This is the home page!</h1>
+    <h1>Welcome <%= currentUser.username %></h1>
     <div class="row">
-        <div class="col-lg-12  borderedDiv">
-            <h1>Today's recipe</h1>
-            <h3>Recipe Name</h3>
-            <div class="divToExpand hiddenContent">
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
-            <p>Cook the Chicken</p>
-            <p>make it tasty</p>
-            <p>don't burn it.</p>
+        <div class="col-lg-6">
+            <a href="/today">
+            <div id="todayButton" class= "borderedDiv">
+                <h1>Today's Recipe</h1>
+                <h2 class="glyphicon glyphicon-apple"></h2>
             </div>
-            <button class="btn btn-block btn-lg btn-primary expander"><span class="glyphicon glyphicon-menu-down"></span></button>
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a href="/recipes">
+            <div id="recipeButton" class= "borderedDiv">
+                <h1>My Recipes</h1>
+                <h2 class="glyphicon glyphicon-cutlery"></h2>
+                <img/>
+            </div>
+            </a>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-3 borderedDiv"><h1>My Recipes</h1></div>
-        <div class="col-lg-9 borderedDiv"><h1>Month at a Glance</h1></div>
+        <div class="col-lg-6">
+            <a href="/shoplist">
+            <div id="shopButton" class= "borderedDiv">
+                <h1>My Shopping List</h1>
+                <h2 class="glyphicon glyphicon-shopping-cart"></h2>
+            </div>
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a href="/month">
+            <div id="monthButton" class= "borderedDiv">
+                <h1>My Month</h1>
+                <h2 class="glyphicon glyphicon-calendar"></h2>
+            </div>
+            </a>
+        </div>
     </div>
 </div>
 

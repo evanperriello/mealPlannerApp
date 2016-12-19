@@ -14,7 +14,8 @@ var express = require("express"),
     
 //Require the Route files here
 var indexRoutes = require("./routes/index"),
-    authenticateRoutes = require("./routes/authenticate");
+    authenticateRoutes = require("./routes/authenticate"),
+    recipeRoutes = require("./routes/recipes");
     
 //DATABASE CONFIG
     //Connect to database:
@@ -68,6 +69,7 @@ app.use(function(req, res, next){
 //ROUTES CONFIG
 app.use(indexRoutes);
 app.use(authenticateRoutes);
+app.use("/recipes", recipeRoutes);
 
 //listen to local port and ip, and console log.
 app.listen(process.env.PORT, process.env.IP, function(){
