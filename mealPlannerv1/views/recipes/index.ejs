@@ -1,4 +1,35 @@
 <% include ../partials/header %>
-<h1>Recipes Index Page</h1>
+<div class="page-header">
+    <h1>My Recipes</h1>
+</div>
+<div class="row text-center">
+    <div class="col-md-3 col-sm-3">
+        <div class="borderedDiv">
+            <h2><em class="glyphicon glyphicon-search"></em></h2>
+            <br/>
+            <h3>Search for New Recipes</h3>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3">
+        <a href="/recipes/new">
+            <div class="borderedDiv">
+                <h2><em class="glyphicon glyphicon-plus"></em></h2>
+                <br/>
+                <h3>Add A New Recipe</h3>
+            </div>
+        </a>
+    </div>
+    <% recipes.forEach(function(recipe) { %>
+        <div class="col-md-3 col-sm-3">
+            <div class="borderedDiv">
+                <img src="<%= recipe.image %>">
+                <div class="caption">
+                    <h4><%= recipe.name %></h4>
+                </div>
+                <p><a href="/recipes/<%= recipe._id %>" class="btn btn-primary">...</a></p>
+            </div>
+        </div>
+    <% }); %>
+</div>
 
 <% include ../partials/footer %>
