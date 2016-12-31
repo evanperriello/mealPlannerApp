@@ -1,4 +1,37 @@
 <% include ../partials/header %>
-<h1>Add A Recipe</h1>
-
+<div class="container join text-center">
+    <h1>Add A New Recipe</h1>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="bg-danger hiddenContent" id="errorMessage"></div>
+            <form method="POST" action="/recipes">
+                <div class="form-group">
+                    <label for="name">Recipe Name<br/><span class="label-helper">Make it descriptive.</span></label>
+                    <input id="name" type="text" class="form-control text-center" name="name" placeholder="Orange Chicken" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image<br/><span class="label-helper">Provide a link to an image of your meal.</span></label>
+                    <input id="image" type="text" class="form-control text-center" name="image" placeholder="foodsogood.imgur.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description<br/><span class="label-helper">Tell others what it's like.</span></label>
+                    <textarea id="description" class="form-control text-center" name="description" required ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ingredients">Ingredients</label>
+                    <textarea id="ingredients" class="form-control text-center" name="ingredients" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="directions">Directions</label>
+                    <textarea id="directions" class="form-control text-center" name="directions" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-success" name="submit" value="Add Recipe">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    
+</div>
 <% include ../partials/footer %>

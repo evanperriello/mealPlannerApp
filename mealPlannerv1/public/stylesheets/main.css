@@ -45,8 +45,10 @@ h1 {
     padding-top:10px;
 }
 .borderedDiv h2 {
-    padding-top:20px;
     font-size:10em;
+}
+.borderedDiv img {
+    width:100%;
 }
 .divToExpand {
     height:60vh;

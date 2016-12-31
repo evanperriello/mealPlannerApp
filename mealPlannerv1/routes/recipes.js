@@ -56,7 +56,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
               console.log(err);
         } else {
             //redirect back to recipes page.
-            res.redirect("/");
+            res.redirect("/recipes");
            }
     });
 
