@@ -11,7 +11,6 @@
             }
             helpVal = helpArr[counter];
             helpsWith.innerHTML = helpVal;
-            console.log(counter);
     }
     
     setInterval(replaceWord, 2500);

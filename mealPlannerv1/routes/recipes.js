@@ -70,7 +70,23 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 //FAVORITE A RECIPE ROUTE
 router.post("/favorite", middleware.isLoggedIn, function(req, res){
-    console.log(req.body.recipe_id);
+    User.findOne({username: req.user.username}, function(err, user){
+        var recipeId = req.body.recipe_id;
+        var placeInArray = user.favRecipes.indexOf(recipeId);
+        console.log(placeInArray);
+        if(err) {
+            console.log(err);
+        } else {
+           if (placeInArray == -1){
+                    user.favRecipes.push(recipeId);
+            } else {
+                user.favRecipes.splice(placeInArray, 1);
+            }
+                user.save();
+                console.log(user);
+        }
+    });
+    res.end();
 });
 
 //RECIPES EDIT ROUTE
