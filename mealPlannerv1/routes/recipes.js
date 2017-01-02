@@ -46,9 +46,17 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         id:  req.user._id,
         username: req.user.username
       },
-      ingredients : req.body.ingredients,
+      ingredients : [],
       directions : req.body.directions,
    };
+   //loop over all keys with "ing" at the start and add their values to the ingredients array.
+   for(var key in req.body) {
+       if(/^ing/.test(key)) {
+           console.log(key);
+           newRecipe.ingredients.push(req.body[key]);
+       }
+   }
+   console.log(newRecipe.ingredients);
     
     //Create new recipe from the object and save to db
     Recipe.create(newRecipe, function(err, newlyCreated){

@@ -8,7 +8,7 @@ var recipeSchema = new mongoose.Schema({
         id:  String,
         username: String
     },
-    ingredients : {},
+    ingredients : [],
     directions : []
     
 });
