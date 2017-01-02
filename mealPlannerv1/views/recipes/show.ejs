@@ -1,4 +1,16 @@
 <% include ../partials/header %>
-<h1>Recipes Show Page</h1>
-
+<div class="container">
+    <div class="row">
+        <h1><%= recipe.name %></h1>
+        <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+        <p><%= recipe.description %></p>
+        <h2>Ingredients</h2>
+        <ul>
+        <% recipe.ingredients.forEach(function(ingredient){ %>
+            <li><%= ingredient %></li>
+        <% }) %>
+        </ul>
+        <p><%= recipe.directions %></p>
+    </div>
+</div>
 <% include ../partials/footer %>
