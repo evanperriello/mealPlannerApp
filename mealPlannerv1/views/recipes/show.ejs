@@ -1,9 +1,15 @@
 <% include ../partials/header %>
 <div class="container">
     <div class="row">
+        <div class="col-lg-8 col-offset-2 text-center">
         <h1><%= recipe.name %></h1>
         <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+        <br/>
         <p><%= recipe.description %></p>
+        <button class="btn btn-success favButton text-center">
+            <span class="glyphicon glyphicon-heart"></span>
+            Add to my favorites!
+        </button>
         <h2>Ingredients</h2>
         <ul>
         <% recipe.ingredients.forEach(function(ingredient){ %>
@@ -12,5 +18,31 @@
         </ul>
         <p><%= recipe.directions %></p>
     </div>
+    </div>
 </div>
-<% include ../partials/footer %>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(".favButton").click(function(e){
+            var recipeId = window.location.pathname.split("/")[2];
+            $.ajax({
+                url: "/recipes/favorite",
+                type: "POST",
+                data: {recipe_id: recipeId},
+            });
+            $(this).toggleClass("btn-success");
+            $(this).toggleClass("btn-danger");
+            $(this).html(function(i, text){
+                if (/Add/.test(text)) { 
+                    text = "<em class='glyphicon glyphicon-heart'></em> Remove from Favorites";
+                    
+                } else { 
+                    text = "<em class='glyphicon glyphicon-heart'></em> Add to My Favorites";
+                }
+                return text;
+            }); 
+        });
+
+        
+    </script>
+</html>

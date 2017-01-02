@@ -68,6 +68,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 });
 
+//FAVORITE A RECIPE ROUTE
+router.post("/favorite", middleware.isLoggedIn, function(req, res){
+    console.log(req.body.recipe_id);
+});
+
 //RECIPES EDIT ROUTE
 //verify that user owns the recipe before letting them access with middleware in future.
 router.get("/:id/edit", function(req, res){
