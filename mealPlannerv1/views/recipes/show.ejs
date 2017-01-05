@@ -6,10 +6,17 @@
         <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
         <br/>
         <p><%= recipe.description %></p>
+        <% if (currentUser.favRecipes.indexOf(recipe._id) == -1){ %>
         <button class="btn btn-success favButton text-center">
             <span class="glyphicon glyphicon-heart"></span>
-            Add to my favorites!
+            Add to My Favorites
         </button>
+        <% } else { %>
+        <button class="btn btn-danger favButton text-center">
+            <span class="glyphicon glyphicon-heart"></span>
+            Remove From My Favorites
+        </button>
+        <% } %>
         <h2>Ingredients</h2>
         <ul>
         <% recipe.ingredients.forEach(function(ingredient){ %>
@@ -34,7 +41,7 @@
             $(this).toggleClass("btn-danger");
             $(this).html(function(i, text){
                 if (/Add/.test(text)) { 
-                    text = "<em class='glyphicon glyphicon-heart'></em> Remove from Favorites";
+                    text = "<em class='glyphicon glyphicon-heart'></em> Remove from My Favorites";
                     
                 } else { 
                     text = "<em class='glyphicon glyphicon-heart'></em> Add to My Favorites";

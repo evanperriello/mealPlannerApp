@@ -87,7 +87,6 @@ router.post("/favorite", middleware.isLoggedIn, function(req, res){
                 user.favRecipes.splice(placeInArray, 1);
             }
                 user.save();
-                console.log(user);
         }
     });
     res.end();
@@ -102,7 +101,7 @@ router.get("/:id/edit", function(req, res){
           console.log("Something went wrong. Recipe not found.");
           res.redirect("back");
       } else{
-          res.render("recipes/edit", {campground: foundRecipe});
+          res.render("recipes/edit", {recipe: foundRecipe});
       }
    });
 });
