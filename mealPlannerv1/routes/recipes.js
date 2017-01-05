@@ -22,6 +22,11 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
    res.render("recipes/new");
 });
 
+//FAVORITE INDEX ROUTE
+router.get("/favorite", middleware.isLoggedIn, middleware.collectRecipes, function(req, res){
+   res.render("recipes/favorites", {recipes: middleware.allFavorites});
+});
+
 //RECIPES SHOW ROUTE
 router.get("/:id", function(req, res){
        //find the recipe with provided ID
@@ -73,7 +78,6 @@ router.post("/favorite", middleware.isLoggedIn, function(req, res){
     User.findOne({username: req.user.username}, function(err, user){
         var recipeId = req.body.recipe_id;
         var placeInArray = user.favRecipes.indexOf(recipeId);
-        console.log(placeInArray);
         if(err) {
             console.log(err);
         } else {
