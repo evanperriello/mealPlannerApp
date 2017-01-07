@@ -1,10 +1,10 @@
 <% include partials/header %>
 <div class="container home text-center">
     <h1>Welcome <%= currentUser.username %></h1>
-    <div class="row">
+    <div id="draggable" class="row">
         <div class="col-lg-6">
             <a href="/today">
-            <div id="todayButton" class= "borderedDiv">
+            <div id="todayButton" class= "homeButton borderedDiv">
                 <h1>Today's Recipe</h1>
                 <h2 class="glyphicon glyphicon-apple"></h2>
             </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-6">
             <a href="/recipes/favorite">
-            <div id="recipeButton" class= "borderedDiv">
+            <div id="recipeButton" class= "homeButton borderedDiv">
                 <h1>My Recipes</h1>
                 <h2 class="glyphicon glyphicon-cutlery"></h2>
                 <img/>
@@ -21,17 +21,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
-            <a href="/shoplist">
-            <div id="shopButton" class= "borderedDiv">
-                <h1>My Shopping List</h1>
-                <h2 class="glyphicon glyphicon-shopping-cart"></h2>
-            </div>
-            </a>
-        </div>
+        <!--<div class="col-lg-6">-->
+        <!--    <a href="/shoplist">-->
+        <!--    <div id="shopButton" class= "borderedDiv">-->
+        <!--        <h1>My Shopping List</h1>-->
+        <!--        <h2 class="glyphicon glyphicon-shopping-cart"></h2>-->
+        <!--    </div>-->
+        <!--    </a>-->
+        <!--</div>-->
         <div class="col-lg-6">
             <a href="/month">
-            <div id="monthButton" class= "borderedDiv">
+            <div id="monthButton" class= "homeButton borderedDiv">
                 <h1>My Month</h1>
                 <h2 class="glyphicon glyphicon-calendar"></h2>
             </div>

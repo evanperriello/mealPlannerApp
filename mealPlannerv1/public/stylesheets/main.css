@@ -42,6 +42,9 @@
     border-radius:7px;
     margin:0 auto;
 }
+.homeButton {
+    height:150px;
+}
 h1 {
     padding-top:10px;
 }

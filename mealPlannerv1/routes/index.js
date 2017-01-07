@@ -16,6 +16,10 @@ router.get("/about", function(req, res){
 router.get("/home", middleware.isLoggedIn, function(req, res){
    res.render("home");
 });
+//MONTH Page
+router.get("/month", middleware.isLoggedIn, middleware.collectRecipes, function(req, res){
+   res.render("month", {recipes: middleware.allFavorites}) 
+});
 
 //export the router object to the main app file
 module.exports = router;
