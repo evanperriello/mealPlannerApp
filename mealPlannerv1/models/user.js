@@ -8,7 +8,8 @@ var UserSchema = new mongoose.Schema({
     favRecipes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
-    }]
+    }],
+    monthlyMeals :[]
 });
 
 UserSchema.plugin(passportLocalMongoose);

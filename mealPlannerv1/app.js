@@ -33,6 +33,7 @@ db.once("open", dbOpen);
 //APP CONFIG
     //set up bodyParser so that req.body object is accessible, accepts UTF-8
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
     //serve static files from the ./public folder
 app.use(express.static(__dirname + "/public"));
     //set ejs as the engine to build HTML from view templates

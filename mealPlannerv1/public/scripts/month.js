@@ -1,5 +1,4 @@
           $(document).ready(function() {
-            console.log(window.location);
             $('.draggable').each(function() {
               var eventObject = {
     			      title: $.trim($(this).text()),
@@ -14,6 +13,7 @@
                   revertDuration: 0
               });
             });
+            var calObjects = [];
             $('#calendar').fullCalendar({
               editable: true,
               droppable: true,
@@ -22,11 +22,32 @@
                 var copiedEventObject = $.extend({}, originalEventObject);
                 copiedEventObject.start = date;
                 //add all eventObjects to an array that should be passed back to the app for storage
-                console.log(copiedEventObject);
+                calObjects.push(copiedEventObject);
                 $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
               }
             });
+            
+            //Send a post request with all the calendar information to /month
+            $("#saveButton").click(function(){
+              var sendData = JSON.stringify(calObjects);
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", window.location.href, true);
+              xhr.setRequestHeader("Content-Type", "application/json");
+              xhr.send(sendData);
+              xhr.onload = function(){
+                if (xhr.status === 200){
+                  console.log("Calendar saved.");
+                } else {
+                  console.log("Calendar not saved.");
+                }
+              };
+            }
+              );
             $("#clearAll").click(
-              function(){$("#calendar").fullCalendar("removeEvents");}
+              function(){
+                $("#calendar").fullCalendar("removeEvents");
+                calObjects = [];
+              }
+              
             );
           });
