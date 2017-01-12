@@ -9,7 +9,7 @@ middleware.isLoggedIn = function isLoggedIn(req, res, next){
 };
 
 middleware.allFavorites = [];
-
+//middleware to collect all the recipes the user has favorited
 middleware.collectRecipes = function collectRecipes(req, res, next){
     middleware.allFavorites = [];
     var counter = 0;

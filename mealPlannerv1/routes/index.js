@@ -20,13 +20,25 @@ router.get("/home", middleware.isLoggedIn, function(req, res){
 });
 //MONTH Page
 router.get("/month", middleware.isLoggedIn, middleware.collectRecipes, function(req, res){
-   res.render("month", {recipes: middleware.allFavorites});
+    User.findById(req.user.id, function(err, user){
+        if (err){
+            console.log(err);
+        } else {
+            res.render("month", {recipes: middleware.allFavorites, events: req.user.monthlyMeals});   
+        }
+});
 });
 //MONTH POST REQUEST for saving monthly recipes
 router.post("/month", middleware.isLoggedIn, middleware.collectRecipes, function(req, res){
-    //User.findById(req.user._id).monthlyMeals = req.calObjects;
-    console.log(req.body);
-    res.render("month", {recipes: middleware.allFavorites, events: req.calObjects});
+    //find the user by the logged in id
+    User.findById(req.user.id, function(err, user){
+        //set their monthlyMeals attribute equal to the submitted data
+        user.monthlyMeals = req.body;
+        //save the db entry
+        user.save();
+        res.render("month", {recipes: middleware.allFavorites, events: user.monthlyMeals});
+    });
+    //FINISH THIS UP NEXT IN FUTURE!
 });
 
 //export the router object to the main app file
