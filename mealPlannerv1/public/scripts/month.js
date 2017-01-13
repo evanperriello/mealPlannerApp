@@ -2,7 +2,7 @@
             //Access the event data passed into the meta tag
             var metas = $("meta");
             var savedEvents = metas[0].getAttribute("content");
-            //Give all of the recipes an event object so they can be saved to the calendar
+            //Give each of the recipes an event object so they can be saved to the calendar
             $('.draggable').each(function() {
               var eventObject = {
     			      title: $.trim($(this).text()),

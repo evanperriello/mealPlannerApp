@@ -1,12 +1,21 @@
 <% include partials/header %>
 <div class="container home text-center">
     <h1>Welcome <%= currentUser.username %></h1>
-    <div id="draggable" class="row">
+    <div class="row">
         <div class="col-lg-6">
-            <a href="/today">
             <div id="todayButton" class= "homeButton borderedDiv">
-                <h1>Today's Recipe</h1>
-                <h2 class="glyphicon glyphicon-apple"></h2>
+                <h1>Today's Recipes</h1>
+                    <% if (todaysRecipe[0]) { %>
+                        <% todaysRecipe.forEach(function(recipe) { %>
+                            <a href="<%= recipe.url %>">
+                                <h2><%= recipe.title %></h2>
+                            </a>
+                        <% }); %>
+                    <% } else { %>
+                        <a href="<%= defaultURL %>">
+                            <h2>No Recipes. Add one in your calendar.</h2>
+                        </a>
+                    <% } %>
             </div>
             </a>
         </div>
