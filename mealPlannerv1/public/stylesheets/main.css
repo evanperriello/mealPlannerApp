@@ -1,116 +1,109 @@
 /*navbar */
-.navbar {
-    margin-bottom: 0;
-    
-}
+    .navbar {
+        margin-bottom: 0;
+    }
 
 /*General styles*/
-a {
-    color:#403E3D;
-}
-a:hover {
-    text-decoration:none;
-}
+    a {
+        color:#403E3D;
+    }
+    a:hover {
+        text-decoration:none;
+    }
+    h1 {
+        padding-top:10px;
+    }
+    .backgroundedH1 {
+        background-color: #F8F8F8;
+        padding-bottom:5px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        border: rgb(0, 0, 0);
+        border: rgba(0, 0, 0, 0.2);
+        border-radius:7px;
+        opacity: .9;
+    }
+    .borderedDiv {
+        overflow: hidden;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        border:rgb(0, 0, 0);
+        border: rgba(0, 0, 0, 0.2);
+        border-radius:7px;
+        margin:10px auto;
+        background-color: #F8F8F8;
+        opacity: .9;
+    }
+    .col-lg-12 {
+        padding-left:0;
+        padding-right:0;
+    }
+    .hiddenContent {display:none;}
+    .page-header {   
+        background-color: #F8F8F8;
+        opacity: .9;
+    }
+    .row {
+        margin-top:20px;
+    }
+
 /* Landing Page */
-#helpsWith {
-    color: #4674bf;
-}
-#landingText{
-    text-align: center;
+    #helpsWith {
+        color: #4674bf;
+    }
+    #landingText{
+        text-align: center;
+    }
+    #landingText .jumbotron {
+        position: relative;
+        top: 200px;
+        opacity:.9;
+    }
+    #landingBack {
+        background-image: url(../images/smallCover.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
 
-}
-#landingText .jumbotron {
-    position: relative;
-    top: 200px;
-    opacity:.9;
-}
-#landingBack {
-    background-image: url(../images/smallCover.jpg);
-    background-size:cover;
-    height: 100vh;
-}
-.row {
-    margin-top:20px;
-}
 /*About Page*/
-#aboutBack {
-    background-image: url(../images/aboutBack.jpg);
-    background-size:cover;
-    height: 100vh;
-}
-#aboutText .jumbotron {
-    position: relative;
-    top: 150px;
-    opacity:.9;
-}
+    #aboutBack {
+        background-image: url(../images/aboutBack.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
+    #aboutText .jumbotron {
+        position: relative;
+        top: 150px;
+        opacity:.9;
+    }
 /*Join form*/
-.label-helper {
-    font-weight: lighter;
-    font-size:1em;
-}
+    .label-helper {
+        font-weight: lighter;
+        font-size:1em;
+    }
 /*homepage styles*/
-#homeBack {
-    background-image: url(../images/homeBack.jpg);
-    background-size:cover;
-    height: 100vh;
-}
+    #homeBack {
+        background-image: url(../images/homeBack.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
+    .homeButton {
+        height:200px;
+    }
+    .homeButton .glyphicon {
+        position: absolute;
+        top:90px;
+        left:47%;
+    }
+/*Recipe pages*/
+    .recipeBack {
+        background-image: url(../images/recipeBack.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
+    .recipe h2 {
+        font-size:8em;
+    }
 
-.borderedDiv {
-    overflow: hidden;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    border: rgba(0, 0, 0, 0.2);
-    border-radius:7px;
-    margin:10px auto;
-    background-color: #F8F8F8;
-    opacity: .9;
-}
-.page-header {    background-color: #F8F8F8;
-    opacity: .9;}
-.homeButton {
-    height:200px;
-}
-.homeButton .glyphicon {
-    position: absolute;
-    top:90px;
-    left:47%;
-}
-
-h1 {
-    padding-top:10px;
-}
-.backgroundedH1 {
-    background-color: #F8F8F8;
-    padding-bottom:5px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    border: rgba(0, 0, 0, 0.2);
-    border-radius:7px;
-    opacity: .9;
-}
-.recipe h2 {
-    font-size:8em;
-}
-.borderedDiv img {
-    height: 125px;
-}
-.divToExpand {
-    height:60vh;
-    white-space: nowrap;
-    overflow-y: scroll;
-}
-.col-lg-12 {
-    padding-left:0;
-    padding-right:0;
-}
-
-
-.recipeBack {
-    background-image: url(../images/recipeBack.jpg);
-    background-size:cover;
-    height: 100vh;
-}
-
-.hiddenContent {display:none;}
 /*SHOW Page */
-#showPage ul {
-    list-style-type:none;
-} 
+    #showPage ul {
+        list-style-type:none;
+    } 
