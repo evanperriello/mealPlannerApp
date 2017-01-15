@@ -1,9 +1,9 @@
 <% include ../partials/header %>
-<div class="container">
+<div id="showPage" class="container">
     <div class="row">
         <div class="col-lg-8 col-offset-2 text-center">
         <h1><%= recipe.name %></h1>
-        <img src="<%= recipe.image %>" alt="<%= recipe.name %>">
+            <img src="<%= recipe.image %>" alt="<%= recipe.name %>" onError="this.onerror=null;this.src='/images/smileByDefault.jpg';">
         <br/>
         <p><%= recipe.description %></p>
         <% if (currentUser.favRecipes.indexOf(recipe._id) == -1){ %>

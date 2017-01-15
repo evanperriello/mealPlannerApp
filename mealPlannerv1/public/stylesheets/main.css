@@ -5,7 +5,12 @@
 }
 
 /*General styles*/
-
+a {
+    color:#403E3D;
+}
+a:hover {
+    text-decoration:none;
+}
 /* Landing Page */
 #helpsWith {
     color: #4674bf;
@@ -28,33 +33,64 @@
     margin-top:20px;
 }
 /*About Page*/
-
+#aboutBack {
+    background-image: url(../images/aboutBack.jpg);
+    background-size:cover;
+    height: 100vh;
+}
+#aboutText .jumbotron {
+    position: relative;
+    top: 150px;
+    opacity:.9;
+}
 /*Join form*/
 .label-helper {
     font-weight: lighter;
     font-size:1em;
 }
 /*homepage styles*/
+#homeBack {
+    background-image: url(../images/homeBack.jpg);
+    background-size:cover;
+    height: 100vh;
+}
+
 .borderedDiv {
-    
+    overflow: hidden;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border: rgba(0, 0, 0, 0.2);
     border-radius:7px;
-    margin:0 auto;
+    margin:10px auto;
+    background-color: #F8F8F8;
+    opacity: .9;
 }
+.page-header {    background-color: #F8F8F8;
+    opacity: .9;}
 .homeButton {
-    height:150px;
+    height:200px;
 }
+.homeButton .glyphicon {
+    position: absolute;
+    top:90px;
+    left:47%;
+}
+
 h1 {
     padding-top:10px;
 }
+.backgroundedH1 {
+    background-color: #F8F8F8;
+    padding-bottom:5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: rgba(0, 0, 0, 0.2);
+    border-radius:7px;
+    opacity: .9;
+}
 .recipe h2 {
-    font-size:10em;
-    margin-top: 0;
-    margin-bottom: 0;
+    font-size:8em;
 }
 .borderedDiv img {
-    width:100%;
+    height: 125px;
 }
 .divToExpand {
     height:60vh;
@@ -65,9 +101,16 @@ h1 {
     padding-left:0;
     padding-right:0;
 }
-#recipeButton {background-color:#97ef97;}
-#monthButton {background-color: #a7d5f2;}
-#todayButton {background-color: #f5f7a3}
-#shopButton {background-color: #f4cdcd;}
+
+
+.recipeBack {
+    background-image: url(../images/recipeBack.jpg);
+    background-size:cover;
+    height: 100vh;
+}
 
 .hiddenContent {display:none;}
+/*SHOW Page */
+#showPage ul {
+    list-style-type:none;
+} 
