@@ -28,7 +28,7 @@ router.get("/favorite", middleware.isLoggedIn, middleware.collectRecipes, functi
 });
 
 //RECIPES SHOW ROUTE
-router.get("/:id", function(req, res){
+router.get("/:id", middleware.isLoggedIn, function(req, res){
        //find the recipe with provided ID
     Recipe.findById(req.params.id).exec(function(err, foundRecipe){
         if (err){

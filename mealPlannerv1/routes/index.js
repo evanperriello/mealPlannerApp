@@ -1,7 +1,8 @@
 var express = require("express"),
     router = express.Router(),
     middleware = require("./../middleware"),
-    User = require("./../models/user.js");
+    User = require("./../models/user.js"),
+    moment = require('moment-timezone');
     
 
 //LANDING/ROOT ROUTE
@@ -16,14 +17,14 @@ router.get("/about", function(req, res){
 
 //HOME Page after login
 router.get("/home", middleware.isLoggedIn, function(req, res){
-    //Get today's date and put it into moment.js format (easier to do this one time than make moment a dependency) 
-    var todaysDate = new Date();
-    var dateString = todaysDate.getFullYear() + "-" + todaysDate.getMonth() + 1 + "-" + todaysDate.getDate();
+    //Get today's date using EST (add other timezones from a dropdown in future) 
+    var todaysDate = moment().tz("America/New_York").format("YYYY-MM-DD");
+    console.log(todaysDate);
     //Define default URL in case user has no recipe of the day
     var defaultUrl = req.protocol + '://' + req.get('host') + "/month";
     //Define function to find the recipe set to today's date.
     function filterRecsByDate(obj){
-        return obj.start === dateString;
+        return obj.start === todaysDate;
     }
     //Find the logged in user.
     User.findById(req.user.id, function(err, user) {

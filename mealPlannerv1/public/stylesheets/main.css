@@ -23,7 +23,6 @@
         opacity: .9;
     }
     .borderedDiv {
-        overflow: hidden;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
         border:rgb(0, 0, 0);
         border: rgba(0, 0, 0, 0.2);
@@ -32,10 +31,7 @@
         background-color: #F8F8F8;
         opacity: .9;
     }
-    .col-lg-12 {
-        padding-left:0;
-        padding-right:0;
-    }
+
     .hiddenContent {display:none;}
     .page-header {   
         background-color: #F8F8F8;
@@ -49,6 +45,11 @@
     #helpsWith {
         color: #4674bf;
     }
+    #landingBack {
+        background-image: url(../images/smallCover.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
     #landingText{
         text-align: center;
     }
@@ -57,11 +58,7 @@
         top: 200px;
         opacity:.9;
     }
-    #landingBack {
-        background-image: url(../images/smallCover.jpg);
-        background-size:cover;
-        height: 100vh;
-    }
+
 
 /*About Page*/
     #aboutBack {
@@ -73,6 +70,31 @@
         position: relative;
         top: 150px;
         opacity:.9;
+    }
+/*Calendar Page */
+    .draggable {
+        cursor: pointer;
+        opacity: .9;
+    }
+    .draggable:hover {
+        opacity:1;
+    }
+    #calendarPage {
+        background-image: url(../images/calBack.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
+    #calendarPage .ui-widget-content {
+        color: white;
+        margin-bottom:10px;
+        background:#4A86A8;
+        border-radius: 3px;
+        border: 1px solid #3a87ad;
+        font-weight: 400;
+    }
+    #calendarPage button {
+
+        margin-bottom:10px;
     }
 /*Join form*/
     .label-helper {
@@ -94,6 +116,7 @@
         left:47%;
     }
 /*Recipe pages*/
+
     .recipeBack {
         background-image: url(../images/recipeBack.jpg);
         background-size:cover;
@@ -103,7 +126,32 @@
         font-size:8em;
     }
 
+
 /*SHOW Page */
+    #showPage {
+        background-image: url(../images/showBack.jpg);
+        background-size:cover;
+        height: 100vh;
+    }
+    .ingredientsList {
+        margin-top:20px;
+        font-size:1.5em;
+    }
+    .recipeImage {
+        width:100%;
+    }
+    .recipeDescription {
+        margin: 10px 0;
+        font-size:1.2em;
+        font-weight: 600;
+    }
+    #showPage {
+        text-align: left;
+    }
     #showPage ul {
-        list-style-type:none;
+        padding-left: 10px;
+    } 
+    #showPage li {
+        width: 50%;
+        border-bottom: #edeaea dotted 2px;
     } 
