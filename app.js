@@ -21,6 +21,7 @@ var indexRoutes = require("./routes/index"),
     //Connect to database:
 var databaseUrl = process.env.DATABASEURL || "mongodb://localhost/meal_planner";
 mongoose.connect(databaseUrl);
+//added comment
     //define function to be called once the database is connected
 function dbOpen(){
     console.log("Database open.");
