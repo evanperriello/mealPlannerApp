@@ -9,8 +9,10 @@
     <div class="col-xs-3">
         <h3>Recipes</h3>
         <% recipes.forEach(function(recipe) { %>
-        <div class="draggable ui-widget-content" thisID="<%= recipe._id %>"><%= recipe.name %></div>
-        <% });%>
+            <% if (recipe){ %>
+                <div class="draggable ui-widget-content" thisID="<%= recipe._id %>"><%= recipe.name %></div>
+            <% } %>
+        <% }); %>
         <button id="saveButton" class="btn btn-block btn-success">Save Calendar</button>
         <button id="clearAll" class="btn btn-block btn-warning">Clear Calendar</button>
         

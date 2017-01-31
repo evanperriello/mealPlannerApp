@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <div class="bg-danger hiddenContent" id="errorMessage"></div>
-            <form method="POST" action="/recipes">
+            <form id="newRecipeForm" method="POST" action="/recipes">
                 <div class="form-group">
                     <label for="name">Recipe Name<br/><span class="label-helper">Make it descriptive.</span></label>
                     <input id="name" type="text" class="form-control text-center" name="name" placeholder="Orange Chicken" required>
@@ -45,7 +45,7 @@
 </div>
 <script>
     var addButton = document.getElementById("addButton");
-    var form = document.getElementsByTagName("form")[1];
+    var form = document.getElementById("newRecipeForm");
     var ingredients = document.querySelectorAll(".ingredients");
     var ingredientSpace = document.getElementById("ingredientSpace");
     var spaceContent = "";

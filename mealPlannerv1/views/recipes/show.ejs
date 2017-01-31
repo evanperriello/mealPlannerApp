@@ -19,6 +19,12 @@
                 Remove From My Favorites
             </button>
             <% } %>
+            <% if(currentUser && (recipe.author.id == currentUser._id)){ %>
+                <a class="btn btn-xs btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
+                <form  class="delete-form" action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-xs btn-danger">Delete</button>
+                </form>
+            <% } %>
         </div>
         <div class="col-lg-8 ingredientsList">
             <h2>Ingredients</h2>

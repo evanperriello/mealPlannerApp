@@ -20,14 +20,16 @@
         </a>
     </div>
     <% recipes.forEach(function(recipe) { %>
+        <% if (recipe){ %>
             <div class="col-md-3 col-sm-3">
-            <div class="borderedDiv">
-                <a href="/recipes/<%= recipe._id %>">
-                        <h3><%= recipe.name %></h3>
-                </a>
-                   
+                <div class="borderedDiv">
+                    <a href="/recipes/<%= recipe._id %>">
+                            <h3><%= recipe.name %></h3>
+                    </a>
+                       
+                </div>
             </div>
-        </div>
+        <% } else { console.log("Recipe not found.");} %>
     <% }); %>
 </div>
 </div>

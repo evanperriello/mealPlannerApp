@@ -19,7 +19,11 @@ middleware.collectRecipes = function collectRecipes(req, res, next){
                 Recipe.findById(myId).exec(function(err, foundRecipe){
                     if(err){
                         //handle error better in future.
+                        counter++;
                         console.log(err);
+                        if (counter === userFavs.length) {
+                            next();
+                        }
                     } else {
                         counter++;
                         middleware.allFavorites.push(foundRecipe);
@@ -33,6 +37,29 @@ middleware.collectRecipes = function collectRecipes(req, res, next){
         } else {
             next();
         }
- }
+ };
+
+middleware.checkRecipeOwnership = function(req, res, next){
+     if(req.isAuthenticated()){
+        Recipe.findById(req.params.id, function(err, foundRecipe){
+            if(err){
+                console.log("Recipe not found.");
+                res.redirect("back");
+            } else {
+                //does user own the recipe?
+                if(foundRecipe.author.id == req.user._id){
+                    next();
+                } else {
+                    console.log("error", "You can only update your own recipes.");
+                   res.redirect("back");
+                }
+               
+            }
+    });
+    } else {
+        console.log("You must be logged in to do that");
+        res.redirect("back");
+    }
+};
 
 module.exports = middleware;

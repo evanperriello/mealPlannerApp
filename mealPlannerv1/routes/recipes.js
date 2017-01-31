@@ -49,10 +49,10 @@ router.post("/", middleware.isLoggedIn, function(req, res){
       description : req.body.description,
       author : {
         id:  req.user._id,
-        username: req.user.username
-      },
-      ingredients : [],
-      directions : req.body.directions,
+         username: req.user.username
+       },
+       ingredients : [],
+       directions : req.body.directions,
    };
    //loop over all keys with "ing" at the start and add their values to the ingredients array.
    for(var key in req.body) {
@@ -66,6 +66,16 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             if (err){
               console.log(err);
         } else {
+            //ADD IN FUNCTION TO FAVORITE THE RECIPE HERE in future
+            var recipeId = newlyCreated.id;
+            User.findById(req.user.id, function(err, user){
+                if(err){
+                    console.log(err);
+                } else {
+                    user.favRecipes.push(recipeId);
+                    user.save();
+                }
+            });
             //redirect back to recipes page.
             res.redirect("/recipes");
            }
@@ -81,6 +91,7 @@ router.post("/favorite", middleware.isLoggedIn, function(req, res){
         if(err) {
             console.log(err);
         } else {
+            //if the recipe is not already in the array
            if (placeInArray == -1){
                     user.favRecipes.push(recipeId);
             } else {
@@ -94,7 +105,7 @@ router.post("/favorite", middleware.isLoggedIn, function(req, res){
 
 //RECIPES EDIT ROUTE
 //verify that user owns the recipe before letting them access with middleware in future.
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", middleware.checkRecipeOwnership, function(req, res){
      Recipe.findById(req.params.id, function(err, foundRecipe){
       if(err){
          //handle this with a flash in future
@@ -107,26 +118,40 @@ router.get("/:id/edit", function(req, res){
 });
 
 //RECIPES UPDATE ROUTE
-//check user owns with middleware in future.
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.checkRecipeOwnership, function(req, res){
    Recipe.findByIdAndUpdate(req.params.id, req.body.recipe, function(err, updatedRecipe){
         if(err){
-            res.redirect("/");
+            console.log(err);
+            res.redirect("back");
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect("/recipes/" + req.params.id);
         }
     });
 });
 
 //RECIPES DESTROY ROUTE
 //check user owns with middleware in future.
-router.delete("/:id", function(req, res){
-   Recipe.findByIdAndRemove(req.params.id, function(err){
-       if(err){
-           res.redirect("/");
-       } else {
-           res.redirect("/");
-       }
-   });
+router.delete("/:id", middleware.checkRecipeOwnership, function(req, res){
+        var recipeId = req.params.id;
+    User.findOne({username: req.user.username}, function(err, user){
+        var placeInArray = user.favRecipes.indexOf(recipeId);
+        if(err) {
+            console.log(err);
+            res.redirect("back");
+        } else {
+ //if the recipe is in the favorites array, remove it before deleting
+           if (placeInArray !== -1){
+                user.favRecipes.splice(placeInArray, 1);
+                user.save();
+            }
+            Recipe.findByIdAndRemove(req.params.id, function(err){
+                if(err){
+                    res.redirect("/" + req.params.id);
+                } else {
+                    res.redirect("/");
+                }
+                });
+        }
+    });
 });
 module.exports = router;

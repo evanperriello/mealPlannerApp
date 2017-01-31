@@ -19,7 +19,6 @@ router.get("/about", function(req, res){
 router.get("/home", middleware.isLoggedIn, function(req, res){
     //Get today's date using EST (add other timezones from a dropdown in future) 
     var todaysDate = moment().tz("America/New_York").format("YYYY-MM-DD");
-    console.log(todaysDate);
     //Define default URL in case user has no recipe of the day
     var defaultUrl = req.protocol + '://' + req.get('host') + "/month";
     //Define function to find the recipe set to today's date.
