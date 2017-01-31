@@ -1,0 +1,26 @@
+<% include partials/monthHeader %>
+<div id="calendarPage">
+<div class="page-header">
+    <h1>My Month</h1>
+</div>
+
+<div class="container">
+<div class="row text-center borderedDiv">
+    <div class="col-xs-3">
+        <h3>Recipes</h3>
+        <% recipes.forEach(function(recipe) { %>
+            <% if (recipe){ %>
+                <div class="draggable ui-widget-content" thisID="<%= recipe._id %>"><%= recipe.name %></div>
+            <% } %>
+        <% }); %>
+        <button id="saveButton" class="btn btn-block btn-success">Save Calendar</button>
+        <button id="clearAll" class="btn btn-block btn-warning">Clear Calendar</button>
+        
+    </div>
+    <div class="col-xs-9" id="calendar"></div>
+    
+</div>
+</div>
+</div>
+</body>
+</html>
