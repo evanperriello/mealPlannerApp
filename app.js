@@ -19,8 +19,8 @@ var indexRoutes = require("./routes/index"),
     
 //DATABASE CONFIG
     //Connect to database:
-mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://evan:dbane1@ds139619.mlab.com:39619/meal-planner-app");
+var databaseUrl = process.env.DATABASEURL || "mongodb://localhost/meal_planner";
+mongoose.connect(databaseUrl);
     //define function to be called once the database is connected
 function dbOpen(){
     console.log("Database open.");
@@ -45,8 +45,9 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 //SESSION CONFIG
+var secretPhrase = process.env.SESSIONSECRET || "I am the very model of the modern major general.";
 app.use(expressSession({
-    secret: "I am the very model of the modern major general",
+    secret: secretPhrase,
     resave: false,
     saveUninitialized: false
 }));
