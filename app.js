@@ -19,7 +19,8 @@ var indexRoutes = require("./routes/index"),
     
 //DATABASE CONFIG
     //Connect to database:
-mongoose.connect("mongodb://localhost/meal_planner");
+//mongoose.connect("mongodb://localhost/meal_planner");
+mongoose.connect("mongodb://evan:dbane1@ds139619.mlab.com:39619/meal-planner-app");
     //define function to be called once the database is connected
 function dbOpen(){
     console.log("Database open.");
