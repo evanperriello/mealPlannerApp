@@ -132,6 +132,7 @@
         background-image: url(../images/showBack.jpg);
         background-size:cover;
         height: 100vh;
+        text-align: left;
     }
     .ingredientsList {
         margin-top:20px;
@@ -145,8 +146,9 @@
         font-size:1.2em;
         font-weight: 600;
     }
-    #showPage {
-        text-align: left;
+    #showPage .btn {
+        margin-top: 5px;
+        width: 100%;
     }
     #showPage ul {
         padding-left: 10px;
