@@ -1,0 +1,46 @@
+<% include partials/header %>
+<div id="homeBack">
+<div class="container home text-center">
+    <h1 class="backgroundedH1">Hello <%= currentUser.username %></h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="todayButton" class= "homeButton borderedDiv">
+                <h1>Today's Recipes</h1>
+                    <% if (todaysRecipe[0]) { %>
+                        <% todaysRecipe.forEach(function(recipe) { %>
+                            <a href="<%= recipe.url %>">
+                                <h2><%= recipe.title %></h2>
+                            </a>
+                        <% }); %>
+                    <% } else { %>
+                        <a href="<%= defaultURL %>">
+                            <h2>An empty plate :(</h2>
+                        </a>
+                    <% } %>
+            </div>
+            </a>
+        </div>
+        <div class="col-lg-4">
+            <a href="/recipes/favorite">
+            <div id="recipeButton" class= "homeButton borderedDiv">
+                <h1>My Recipes</h1>
+                <h2 class="glyphicon glyphicon-cutlery"></h2>
+                <img/>
+            </div>
+            </a>
+        </div>
+    
+        <div class="col-lg-4">
+            <a href="/month">
+            <div id="monthButton" class= "homeButton borderedDiv">
+                <h1>My Month</h1>
+                <h2 class="glyphicon glyphicon-calendar"></h2>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+<% include partials/footer %>
+<script src="/scripts/home.js"></script>
